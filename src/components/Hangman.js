@@ -1,12 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Header from "./Header";
 import { words3 } from "../data";
-// import ResultArea from "./ResultArea";
-// import image from "./keyboardA.png";
+import hangingDudes from "../images/index";
+import "./FontawesomeIcons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Hangman = () => {
   let [isAnswer, setAnswer] = useState();
-  let [livesLeft, setLivesLeft] = useState(5);
+  let [livesLeft, setLivesLeft] = useState(0);
 
   const handleStartGame = () => {
     const randomWord = Math.floor(Math.random() * words3.wordlist.length - 1);
@@ -15,7 +16,7 @@ const Hangman = () => {
 
   const handleGuess = (e) => {
     e.preventDefault();
-    livesLeft = setLivesLeft(livesLeft - 1);
+    livesLeft = setLivesLeft(livesLeft + 1);
     // isGuessed = setIsGuessed(getElementById(e.taget.key);
     console.log("clicked");
   };
@@ -23,8 +24,12 @@ const Hangman = () => {
   const handleReset = () => {
     // console.log("Reset");
     handleStartGame();
-    livesLeft = setLivesLeft(5);
+    livesLeft = setLivesLeft(10);
   };
+
+  useEffect(() => {
+    console.log("useEffect");
+  });
 
   const keyboardLetters = "abcdefghijklmnopqrstuvwxyz"
     .split("")
@@ -48,6 +53,12 @@ const Hangman = () => {
       return (
         <div className="wordboardArea">
           {isAnswer.toUpperCase()}
+          <FontAwesomeIcon
+            icon="chevronRight"
+            className="menuIcon"
+            size="2x"
+            cursor="pointer"
+          />
           <button onClick={handleReset}>Reset</button>
         </div>
       );
@@ -67,7 +78,16 @@ const Hangman = () => {
         <div className="leftRight">
           <div className="testLeft">
             <div className="whiteboardArea">
-              {livesLeft > 0 ? livesLeft : "DEAD"}
+              {livesLeft < 11 ? (
+                <img
+                  className="livesPicture"
+                  alt="hangingDude"
+                  src={hangingDudes.hangingDudes[`${livesLeft}`]}
+                />
+              ) : (
+                "DEAD"
+              )}
+              {/* {livesLeft > 0 ? livesLeft : "DEAD"} */}
             </div>
           </div>
           <div className="testRight">

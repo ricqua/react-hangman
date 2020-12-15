@@ -28,14 +28,14 @@ button {
   flex-flow: column;
   width: 80vw;
   height: 75vh;
-  border: solid black 1px;
+  /* border: solid black 1px; */
 }
 
 .leftRight {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid rgb(207, 29, 29) 1px;
+  /* border: solid rgb(207, 29, 29) 1px; */
   height: 100%;
   width: 100%;
 }
@@ -43,33 +43,29 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid rgb(0, 243, 41) 1px;
-  flex-grow: 1;
+  /* border: solid rgb(0, 243, 41) 1px; */
   height: 100%;
-  /* width: 80%; */
+  width: 50vw;
 }
 
 .testRight {
   display: flex;
   justify-content: center;
   align-items: center;
-  border: solid rgb(194, 0, 201) 1px;
-  flex-grow: 1;
+  /* border: solid rgb(194, 0, 201) 1px; */
   height: 100%;
+  width: 50vw;
 }
 
 /****************  HEADER ****************/
 .headerComponent {
-  /* position: absolute; */
   top: 0;
-  /* width: 80vw; */
   padding: 10px;
   display: flex;
   flex-direction: row;
   align-items: center;
   align-content: space-around;
-  /* background-color: rgb(224, 73, 73); */
-  border-bottom: solid black 1px;
+  /* border-bottom: solid black 1px; */
 }
 
 .headerComponent > h1 {
@@ -87,44 +83,29 @@ button {
 /****************  WHITEBOARD ****************/
 
 .whiteboardArea {
-  /* width: 500px; */
-  /* height: 500px; */
   background: rgb(22, 22, 22);
-  /* height: 100%; */
-  width: 100%;
+  height: 80%;
+  width: 80%;
   box-shadow: 5px 10px 2vh rgb(0, 0, 0);
   display: flex;
   text-align: center;
   justify-content: center;
   color: white;
   font-size: 36pt;
-  padding: 25px;
 }
 
 .whiteboardArea > p {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-
-  background-color: #333333ff;
-  position: relative;
-  flex-grow: 1;
-  margin: 3vh 3vw 5vh 10vw;
 }
 
 /****************  KEYBOARD ****************/
 .keyboardArea {
-  padding: 50px;
-  /* margin: 50px; */
   display: flex;
   flex-flow: row;
   flex-wrap: wrap;
-  /* align-items: center; */
   justify-content: center;
   align-content: space-around;
-  /* width: 50vw; */
-  /* flex-grow: 1; */
+  height: 80%;
+  width: 80%;
 }
 
 .keyboardLetter {

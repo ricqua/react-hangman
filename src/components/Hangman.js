@@ -65,8 +65,14 @@ const Hangman = () => {
       <div className="maintest">
         <Header />
         <div className="leftRight">
-          <div className="testLeft">LEFT</div>
-          <div className="testRight">RIGHT</div>
+          <div className="testLeft">
+            <div className="whiteboardArea">
+              {livesLeft > 0 ? livesLeft : "DEAD"}
+            </div>
+          </div>
+          <div className="testRight">
+            <div className="keyboardArea">{keyboardLetters}</div>
+          </div>
         </div>
         {/* <div className="whiteboardArea">
           {livesLeft > 0 ? livesLeft : "DEAD"}

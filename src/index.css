@@ -1,13 +1,196 @@
-body {
+/****************  SETUP ****************/
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  font-size: 12pt;
+  font-family: helvetica;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+button {
+  cursor: pointer;
+}
+
+.wrapper {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-image: linear-gradient(
+    to top,
+    #1e3c72 0%,
+    #1e3c72 1%,
+    #2a5298 100%
+  );
+  display: flex;
+  justify-content: center;
+}
+
+.maintest {
+  display: flex;
+  flex-flow: column;
+  width: 80vw;
+  height: 75vh;
+  border: solid black 1px;
+}
+
+.leftRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid rgb(207, 29, 29) 1px;
+  height: 100%;
+  width: 100%;
+}
+.testLeft {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid rgb(0, 243, 41) 1px;
+  flex-grow: 1;
+  height: 100%;
+  /* width: 80%; */
+}
+
+.testRight {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: solid rgb(194, 0, 201) 1px;
+  flex-grow: 1;
+  height: 100%;
+}
+
+/****************  HEADER ****************/
+.headerComponent {
+  /* position: absolute; */
+  top: 0;
+  /* width: 80vw; */
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: space-around;
+  /* background-color: rgb(224, 73, 73); */
+  border-bottom: solid black 1px;
+}
+
+.headerComponent > h1 {
+  font-size: 36pt;
+  color: white;
+  font-family: helvetica;
+  flex-grow: 1;
+  text-align: center;
+}
+
+.headerComponent > button {
+  padding: 5px;
+}
+
+/****************  WHITEBOARD ****************/
+
+.whiteboardArea {
+  /* width: 500px; */
+  /* height: 500px; */
+  background: rgb(22, 22, 22);
+  /* height: 100%; */
+  width: 100%;
+  box-shadow: 5px 10px 2vh rgb(0, 0, 0);
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  color: white;
+  font-size: 36pt;
+  padding: 25px;
+}
+
+.whiteboardArea > p {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #333333ff;
+  position: relative;
+  flex-grow: 1;
+  margin: 3vh 3vw 5vh 10vw;
+}
+
+/****************  KEYBOARD ****************/
+.keyboardArea {
+  padding: 50px;
+  /* margin: 50px; */
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  /* align-items: center; */
+  justify-content: center;
+  align-content: space-around;
+  /* width: 50vw; */
+  /* flex-grow: 1; */
+}
+
+.keyboardLetter {
+  color: white;
+  border: none;
+  background: Transparent;
+  /* border: 1px solid black; */
+  font-size: 6vh;
+  font-weight: bold;
+  letter-spacing: 20px;
+  display: inline-block;
+  height: 6vh;
+}
+
+.keyboardLetter:hover {
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 10px white;
+  animation: jiggle 0.3s infinite;
+}
+
+.keyboardLetter:disabled {
+  color: transparent;
+  text-shadow: 0 0 0;
+  cursor: auto;
+  opacity: 0;
+}
+
+/****************  WORDBOARD ****************/
+.wordboardArea {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  height: 15vh;
+  width: 100vw;
+  background-color: white;
+  border-top: 3px solid black;
+  justify-content: center;
+  align-items: center;
+  padding: 0 0 2vh 0;
+  color: black;
+  font-size: 10vh;
+  font-family: monospace;
+  /* border-bottom: 1vh solid black; */
+}
+
+.startArea {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: space-around;
+  height: 20vh;
+  width: 100vw;
+  /* background-color: white; */
+  /* border-top: 3px solid black; */
+  justify-content: center;
+  align-items: center;
+  padding: 0 0 4vh 0;
+  color: black;
+  font-size: 10vh;
+  font-family: monospace;
+  border-bottom: 1vh solid black;
+}
+
+.startArea > button {
+  padding: 10px;
 }

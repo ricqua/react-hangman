@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 import { words3 } from "../data";
 import hangingDudes from "../images/index";
-import "./FontawesomeIcons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import "./FontawesomeIcons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Hangman = () => {
   let [isAnswer, setAnswer] = useState();
   let [livesLeft, setLivesLeft] = useState(0);
+  let [isGuessedLetters, setGuessedLetters] = useState([]);
 
   const handleStartGame = () => {
     const randomWord = Math.floor(Math.random() * words3.wordlist.length - 1);
@@ -17,6 +18,7 @@ const Hangman = () => {
   const handleGuess = (e) => {
     e.preventDefault();
     livesLeft = setLivesLeft(livesLeft + 1);
+    isGuessedLetters = setGuessedLetters(...isGuessedLetters);
     // isGuessed = setIsGuessed(getElementById(e.taget.key);
     console.log("clicked");
   };
@@ -24,16 +26,17 @@ const Hangman = () => {
   const handleReset = () => {
     // console.log("Reset");
     handleStartGame();
-    livesLeft = setLivesLeft(10);
+    livesLeft = setLivesLeft(0);
   };
 
-  useEffect(() => {
-    console.log("useEffect");
-  });
+  // useEffect(() => {
+  //   console.log("useEffect");
+  // });
 
   const keyboardLetters = "abcdefghijklmnopqrstuvwxyz"
     .split("")
     .map((letter) => {
+      // console.log(letter);
       return (
         <div
           key={letter}
@@ -53,12 +56,7 @@ const Hangman = () => {
       return (
         <div className="wordboardArea">
           {isAnswer.toUpperCase()}
-          <FontAwesomeIcon
-            icon="chevronRight"
-            className="menuIcon"
-            size="2x"
-            cursor="pointer"
-          />
+          {/* <FontAwesomeIcon icon="chevronright" size="2x" cursor="pointer" /> */}
           <button onClick={handleReset}>Reset</button>
         </div>
       );
@@ -71,6 +69,13 @@ const Hangman = () => {
     }
   };
 
+  // const updateHangmanPicture = () => {
+  //   console.log(livesLeft);
+  //   document.getElementById("hangingDude").src =
+  //     "../images/hangingDude" + livesLeft + ".png";
+  //   // return;
+  // };
+
   return (
     <React.Fragment>
       <div className="maintest">
@@ -78,6 +83,7 @@ const Hangman = () => {
         <div className="leftRight">
           <div className="testLeft">
             <div className="whiteboardArea">
+              {/* <img id="hangingDude" alt=""></img> */}
               {livesLeft < 11 ? (
                 <img
                   className="livesPicture"
@@ -85,19 +91,14 @@ const Hangman = () => {
                   src={hangingDudes.hangingDudes[`${livesLeft}`]}
                 />
               ) : (
-                "DEAD"
+                "STAAAP..."
               )}
-              {/* {livesLeft > 0 ? livesLeft : "DEAD"} */}
             </div>
           </div>
           <div className="testRight">
             <div className="keyboardArea">{keyboardLetters}</div>
           </div>
         </div>
-        {/* <div className="whiteboardArea">
-          {livesLeft > 0 ? livesLeft : "DEAD"}
-        </div>
-        <div className="keyboardArea">{keyboardLetters}</div> */}
       </div>
       <ResultArea />
     </React.Fragment>

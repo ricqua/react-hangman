@@ -1,20 +1,13 @@
 import React, { useState } from "react";
 import Header from "./Header";
 import { words3 } from "../data";
-import hangingDudes from "../images/index";
-// import "./FontawesomeIcons";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { hangingDudes, keyboardCharacters } from "../images/index";
 
 const Hangman = () => {
-  let [isAnswer, setAnswer] = useState("");
+  let isAnswer =
+    words3.wordlist[Math.floor(Math.random() * words3.wordlist.length - 1)];
   let [livesLeft, setLivesLeft] = useState(0);
   let [isGuessedLetters, setGuessedLetters] = useState("");
-
-  const handleStartGame = () => {
-    setAnswer(
-      words3.wordlist[Math.floor(Math.random() * words3.wordlist.length - 1)]
-    );
-  };
 
   const handleGuess = (e) => {
     e.preventDefault();
@@ -23,8 +16,7 @@ const Hangman = () => {
     let letter = document.querySelector("#" + e.target.id).id;
 
     setGuessedLetters(isGuessedLetters.concat(letter));
-    console.log(document.querySelector("#" + e.target.id));
-    // document.querySelector("keyboarda").disabled = true;
+    // console.log(document.querySelector("#" + e.target.id));
     document
       .querySelector("#" + e.target.id)
       .setAttribute("class", "keyboardLetterDis");
@@ -38,6 +30,7 @@ const Hangman = () => {
   const keyboardLetters = "abcdefghijklmnopqrstuvwxyz"
     .split("")
     .map((letter) => {
+      let letterCode = letter.charCodeAt(0) - 96;
       return (
         <div
           key={letter}
@@ -45,26 +38,31 @@ const Hangman = () => {
           className="keyboardLetter"
           onClick={handleGuess}
         >
-          {letter.toUpperCase()}
+          {/* {letter.toUpperCase()} */}
+          <img
+            alt={"keyboardCharacters" + letterCode}
+            src={keyboardCharacters.keyboardCharacters[letterCode]}
+          />
         </div>
       );
     });
 
   const ResultArea = () => {
-    if (isAnswer) {
-      return (
-        <div className="wordboardArea">
-          {isAnswer.toUpperCase()}
-          {/* <button onClick={handleReset}>Reset</button> */}
-        </div>
-      );
-    } else {
-      return (
-        <div className="startArea">
-          <button onClick={handleStartGame}>Start Game</button>
-        </div>
-      );
-    }
+    // let wordStatus = isAnswer.split("");
+    console.log(isAnswer.split(""));
+    // .map((letter) =>
+    //   isGuessedLetters.indexOf(letter) >= 0 ? letter : " _ "
+    // );
+    // .join("");
+    // document.getElementById("wordboardArea").innerHTML = wordStatus;
+
+    return (
+      <div className="wordboardArea">
+        {isAnswer.toUpperCase()}
+
+        {/* <button onClick={handleReset}>Reset</button> */}
+      </div>
+    );
   };
 
   return (

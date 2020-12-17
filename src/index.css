@@ -122,13 +122,11 @@ button {
 .keyboardLetter {
   color: white;
   border: none;
-  background: Transparent;
-  /* border: 1px solid black; */
   font-size: 6vh;
   font-weight: bold;
   letter-spacing: 20px;
   display: inline-block;
-  height: 6vh;
+  /* height: 6vh; */
 }
 
 .keyboardLetter:hover {
@@ -139,11 +137,21 @@ button {
   animation: jiggle 0.3s infinite;
 }
 
-.keyboardLetter:disabled {
+/* .keyboardLetter:disabled {
+  color: yellow;
+  text-shadow: 0 0 0;
+  cursor: auto;
+  opacity: 50%;
+} */
+
+.keyboardLetterDis {
   color: transparent;
   text-shadow: 0 0 0;
   cursor: auto;
-  opacity: 0;
+  opacity: 0%;
+  font-size: 6vh;
+  letter-spacing: 20px;
+  display: inline-block;
 }
 
 /****************  WORDBOARD ****************/

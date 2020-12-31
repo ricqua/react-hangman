@@ -1,14 +1,20 @@
 import React from "react";
-// import "./components/FontawesomeIcons";
-import Hangman from "./components/Hangman";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import Home from "./components/Home/Home";
+import Hangman from "./components/Hangman/Hangman";
+import RockPaperScissors from "./components/RockPaperScissors/RockPaperScissors";
 
 const App = () => {
   return (
-    <React.Fragment>
-      <div className="wrapper">
-        <Hangman />
-      </div>
-    </React.Fragment>
+    <BrowserRouter>
+      <React.Fragment>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/hangman" component={Hangman} />
+          <Route path="/rockpaperscissors" component={RockPaperScissors} />
+        </Switch>
+      </React.Fragment>
+    </BrowserRouter>
   );
 };
 

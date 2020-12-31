@@ -23,7 +23,7 @@ button {
   justify-content: center;
 }
 
-.maintest {
+.main {
   display: flex;
   flex-flow: column;
   width: 80vw;
@@ -39,7 +39,7 @@ button {
   height: 100%;
   width: 100%;
 }
-.testLeft {
+.mainLeft {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -48,7 +48,7 @@ button {
   width: 50vw;
 }
 
-.testRight {
+.mainRight {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -80,11 +80,11 @@ button {
   padding: 5px;
 }
 
-/* .menuButton {
-  height: 35px;
-  cursor: pointer;
-  text-shadow: 0 0 10px white;
-} */
+.menuIcons {
+  size: "2x";
+  color: "white";
+  cursor: "pointer";
+}
 
 /****************  WHITEBOARD ****************/
 
@@ -108,6 +108,11 @@ button {
   max-height: 66%;
 }
 
+.isGuessedletters {
+  color: white;
+  font-size: 18pt;
+}
+
 /****************  KEYBOARD ****************/
 .keyboardArea {
   display: flex;
@@ -122,11 +127,10 @@ button {
 .keyboardLetter {
   color: white;
   border: none;
+  background: none;
   font-size: 6vh;
-  font-weight: bold;
   letter-spacing: 20px;
   display: inline-block;
-  /* height: 6vh; */
 }
 
 .keyboardLetter:hover {
@@ -137,21 +141,10 @@ button {
   animation: jiggle 0.3s infinite;
 }
 
-/* .keyboardLetter:disabled {
-  color: yellow;
-  text-shadow: 0 0 0;
-  cursor: auto;
-  opacity: 50%;
-} */
-
-.keyboardLetterDis {
+.keyboardLetter:disabled {
   color: transparent;
   text-shadow: 0 0 0;
-  cursor: auto;
-  opacity: 0%;
-  font-size: 6vh;
-  letter-spacing: 20px;
-  display: inline-block;
+  cursor: default;
 }
 
 /****************  WORDBOARD ****************/

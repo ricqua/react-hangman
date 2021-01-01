@@ -1,4 +1,115 @@
+/****************  SETUP ****************/
 * {
-  font-size: 16pt;
-  color: red;
+  margin: 0;
+  padding: 0;
+  font-size: 12pt;
+  font-family: helvetica;
+  color: white;
+}
+
+.attackButton {
+  cursor: pointer;
+}
+
+.wrapper {
+  min-height: 100vh;
+  min-width: 100vw;
+  background-image: linear-gradient(
+    to top,
+    #1e3c72 0%,
+    #1e3c72 1%,
+    #2a5298 100%
+  );
+  display: flex;
+  justify-content: center;
+}
+
+.main {
+  display: flex;
+  flex-flow: column;
+  width: 80vw;
+  height: 100vh;
+  /* border: solid black 1px; */
+}
+
+/****************  HEADER ****************/
+.headerComponent {
+  top: 0;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-content: space-around;
+  /* border-bottom: solid black 1px; */
+}
+
+.headerComponent > h1 {
+  font-size: 36pt;
+  color: white;
+  font-family: helvetica;
+  flex-grow: 1;
+  text-align: center;
+}
+
+/****************  ATTACK AREA ****************/
+
+.attackButtons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  height: 50%;
+  /* border: solid red 1px; */
+}
+
+.attackButtons > img {
+  height: 100px;
+  margin: 15px;
+  opacity: 0.75;
+}
+
+.attackButtons > img:hover {
+  transition: 0.2s ease;
+  opacity: 1;
+}
+
+/****************  VICTORY STATUS AREA ****************/
+.victoryArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* height: 30%; */
+  width: 100%;
+  /* border: solid black 1px; */
+}
+
+/****************  RESULTS AREA ****************/
+.resultsArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30%;
+  width: 100%;
+  /* border: solid black 1px; */
+}
+
+/****************  PLAYER SIDE ****************/
+.playerSide {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 50vw;
+}
+
+.player {
+}
+
+.score {
+  font-size: 36pt;
+}
+
+.choice {
+  font-size: 24pt;
 }

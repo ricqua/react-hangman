@@ -166,6 +166,11 @@ button {
   /* border-bottom: 1vh solid black; */
 }
 
+.displayLetter {
+  font-size: 10vh;
+  margin: 15px;
+}
+
 .startArea {
   position: absolute;
   bottom: 0;

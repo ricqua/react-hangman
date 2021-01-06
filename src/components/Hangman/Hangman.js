@@ -1,47 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import "./hangman.css";
 import HeaderArea from "./Header";
-import WhiteboardArea from "./WhiteboardArea";
-import GuessedLetters from "./GuessedLetters";
-// import ResultArea from "./ResultArea";
-import { words3 } from "./data";
+import { words3 } from "./dictionary";
+import Whiteboard from "./Whiteboard";
+import AlreadyGuessed from "./AlreadyGuessed";
+import ResultsArea from "./ResultsArea";
+import { useEffect } from "react/cjs/react.development";
 
-const Hangman = () => {
-  const [isLives, setLives] = useState(0);
-  const [isGuessedLetters, setGuessedLetters] = useState("");
-  const [isAnswer, setAnswer] = useState(
+function Hangman() {
+  const [lives, setLives] = useState(0);
+  const [guessedLetters, setGuessedLetters] = useState("");
+  const [answer, setAnswer] = useState(
     words3.wordlist[Math.floor(Math.random() * words3.wordlist.length - 1)]
-  );
-  const [isDisplayWord, setDisplayWord] = useState(
-    isAnswer.split("").map(() => {
-      return " _ ";
-    })
   );
 
   const handleGuess = (e) => {
     e.preventDefault();
-    setGuessedLetters(isGuessedLetters.concat(e.target.id));
     e.target.disabled = true;
-    if (isAnswer.indexOf(e.target.id) < 0) {
-      setLives(isLives + 1);
-    }
+    setGuessedLetters(guessedLetters.concat(e.target.id));
   };
 
   useEffect(() => {
-    const lastLetter = isGuessedLetters[isGuessedLetters.length - 1];
-    const letterIndex = isAnswer.indexOf(lastLetter);
-    console.log(isAnswer);
-    console.log(isDisplayWord.splice(letterIndex, 10, "help"));
-
-    if (letterIndex >= 0) {
-      // setDisplayWord((prevDisplayWord) => {
-      //   return [...prevDisplayWord, (isDisplayWord[letterIndex], lastLetter)];
-
-      //   // [(isDisplayWord[letterIndex] = lastLetter)];
-      // });
-      setDisplayWord(isDisplayWord.splice(letterIndex, 1, lastLetter));
+    if (answer.indexOf(guessedLetters.slice(-1))) {
+      setLives(lives + 1);
     }
-  }, [isGuessedLetters]);
+  }, [guessedLetters]);
 
   const keyboardLetters = (
     <React.Fragment>
@@ -69,17 +52,16 @@ const Hangman = () => {
           <HeaderArea />
           <div className="leftRight">
             <div className="mainLeft">
-              <WhiteboardArea isLives={isLives} />
+              <Whiteboard lives={lives} />
             </div>
             <div className="mainRight">{keyboardLetters}</div>
           </div>
-          <GuessedLetters isGuessedLetters={isGuessedLetters} />
+          <AlreadyGuessed guessedLetters={guessedLetters} />
         </div>
-        {/* <ResultArea targetWord={isAnswer} guessedLetters={isGuessedLetters} /> */}
-        <div className="wordboardArea">{isDisplayWord}</div>
+        <ResultsArea answer={answer} guessedLetters={guessedLetters} />
       </div>
     </React.Fragment>
   );
-};
+}
 
 export default Hangman;
